@@ -6,13 +6,16 @@
     "async": "^2.0.0-rc.5",
     "bindings": "^1.2.1",
     "decree": "0.0.6",
-    "nan": "^2.3.2"
+    "nan": "^2.3.2",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "install": "node-gyp rebuild",
     "test": "./node_modules/.bin/mocha --opts tests/mocha.opts tests",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --opts tests/mocha.opts tests",
-    "travis": "./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --opts tests/mocha.opts --bail tests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "travis": "./node_modules/.bin/istanbul cover --report lcovonly ./node_modules/.bin/_mocha -- --opts tests/mocha.opts --bail tests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "gypfile": true,
   "description": "Comprehensive, fast, and simple image processing and manipulation",
@@ -66,5 +69,6 @@
   "bugs": {
     "url": "https://github.com/EyalAr/lwip/issues"
   },
-  "homepage": "https://github.com/EyalAr/lwip"
+  "homepage": "https://github.com/EyalAr/lwip",
+  "snyk": true
 }
